@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div>
+    Checkout
+    <div>Name <input type="text" name="fullname" /></div>
+    <div>
+      Address
+      <div>
+        <textarea name="address"></textarea>
+      </div>
+    </div>
+
+    <button onclick="submitCheckout()">Checkout</button>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="./main.js"></script>
+
+  <script>
+    const submitCheckout = async () => {
+      const fullname = document.querySelector("input[name=fullname]").value;
+      const address = document.querySelector("textarea[name=address]").value;
+      await placeorder({
+        name: fullname,
+        address,
+      })
+    }
+  </script>
+</body>
+</html>
